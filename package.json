@@ -1,0 +1,45 @@
+{
+  "name": "dsh-unity-csharp-habits",
+  "version": "1.0.0",
+  "description": "Unity C# 项目代码习惯技能包：命名、文件结构、中文 XML 注释硬规则、Unity 写法、日志与生命周期、设计取向，含正反例对照表。纯技能包，无浏览器半。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "skills",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis",
+    "skill",
+    "unity",
+    "csharp",
+    "unity-csharp-habits"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SHUNJIANBAO/dsh-unity-csharp-habits.git"
+  },
+  "scripts": {
+    "test": "node test/offline-regression.mjs"
+  }
+}
