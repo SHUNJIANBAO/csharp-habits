@@ -5,7 +5,7 @@
 // 跑法：node test/offline-regression.mjs
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { createChecker } from "./harness.mjs";
+import { createChecker, registerSkillProviderFake } from "./harness.mjs";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const hostFile = path.join(here, "..", "lib", "index.js");
@@ -29,7 +29,7 @@ let provider = null;
   console.log("\n2. 注册提供方");
   let threw = null;
   try {
-    host.apply({ skills: { registerProvider: (created) => { provider = created; } } });
+    host.apply({ skills: { registerProvider: registerSkillProviderFake((instance) => { provider = instance; }) } });
   } catch (error) { threw = error; }
   check("apply 未抛错且已注册提供方", threw === null && provider !== null);
   check("提供方名 = dsh-unity-csharp-habits", provider.name === "dsh-unity-csharp-habits");
